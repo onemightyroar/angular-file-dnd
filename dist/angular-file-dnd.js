@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  angular.module('omr.directives', []).directive('fileDropzone', function() {
+  angular.module('omr.angularFileDnD', []).directive('fileDropzone', function() {
     return {
       restrict: 'A',
       scope: {

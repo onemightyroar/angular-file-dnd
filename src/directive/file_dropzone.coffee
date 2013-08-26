@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('omr.directives', [])
+angular.module('omr.angularFileDnD', [])
   .directive('fileDropzone', () ->
     restrict: 'A'
     scope: {
