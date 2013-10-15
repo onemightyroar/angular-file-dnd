@@ -52,7 +52,9 @@
               });
               return scope.$emit('file-dropzone-drop-event', {
                 itemDropped: file,
-                mimeType: type
+                itemType: type,
+                itemName: name,
+                itemSize: size
               });
             }
           };
