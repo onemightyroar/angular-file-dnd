@@ -50,6 +50,7 @@ angular.module('omr.angularFileDnD', [])
             scope.$apply ->
               scope.file = evt.target.result
               scope.fileName = name if angular.isString scope.fileName
+            scope.$emit 'file-dropzone-drop-event', {itemDropped: file, itemType: type, itemName: name, itemSize: size}
 
         file = event.dataTransfer.files[0]
         name = file.name

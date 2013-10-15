@@ -44,11 +44,15 @@
           reader = new FileReader();
           reader.onload = function(evt) {
             if (checkSize(size) && isTypeValid(type)) {
-              return scope.$apply(function() {
+              scope.$apply(function() {
                 scope.file = evt.target.result;
                 if (angular.isString(scope.fileName)) {
                   return scope.fileName = name;
                 }
+              });
+              return scope.$emit('file-dropzone-drop-event', {
+                itemDropped: file,
+                mimeType: type
               });
             }
           };
