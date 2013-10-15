@@ -2,7 +2,7 @@
   "author": "Louis Sivillo",
   "name": "angular-file-dnd",
   "description": "AngularJS directive leveraging HTML5 Drag and Drop and the FileReader API",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "main": "src/dist/angular-file-dnd.min.js",
   "dependencies": {
     "angular": "1.0.8"

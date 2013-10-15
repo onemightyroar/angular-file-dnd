@@ -51,10 +51,10 @@
                 }
               });
               return scope.$emit('file-dropzone-drop-event', {
-                itemDropped: file,
-                itemType: type,
-                itemName: name,
-                itemSize: size
+                file: scope.file,
+                type: type,
+                name: name,
+                size: size
               });
             }
           };
