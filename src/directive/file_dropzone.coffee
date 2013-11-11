@@ -9,10 +9,13 @@ angular.module('omr.angularFileDnD', [])
     }
     link: (scope, element, attrs) ->
 
+      getDataTransfer = (event) ->
+        dataTransfer = event.dataTransfer || event.originalEvent.dataTransfer
+
       # function to prevent default behavior (browser loading image)
       processDragOverOrEnter = (event) ->
         event?.preventDefault()
-        event.dataTransfer.effectAllowed = 'copy'
+        getDataTransfer(event).effectAllowed = 'copy'
         false
 
       validMimeTypes = attrs.fileDropzone
@@ -52,7 +55,7 @@ angular.module('omr.angularFileDnD', [])
               scope.fileName = name if angular.isString scope.fileName
             scope.$emit 'file-dropzone-drop-event', {file: scope.file, type: type, name: name, size: size}
 
-        file = event.dataTransfer.files[0]
+        file = getDataTransfer(event).files[0]
         name = file.name
         type = file.type
         size = file.size

@@ -8,12 +8,16 @@
         fileName: '='
       },
       link: function(scope, element, attrs) {
-        var checkSize, isTypeValid, processDragOverOrEnter, validMimeTypes;
+        var checkSize, getDataTransfer, isTypeValid, processDragOverOrEnter, validMimeTypes;
+        getDataTransfer = function(event) {
+          var dataTransfer;
+          return dataTransfer = event.dataTransfer || event.originalEvent.dataTransfer;
+        };
         processDragOverOrEnter = function(event) {
           if (event != null) {
             event.preventDefault();
           }
-          event.dataTransfer.effectAllowed = 'copy';
+          getDataTransfer(event).effectAllowed = 'copy';
           return false;
         };
         validMimeTypes = attrs.fileDropzone;
@@ -58,7 +62,7 @@
               });
             }
           };
-          file = event.dataTransfer.files[0];
+          file = getDataTransfer(event).files[0];
           name = file.name;
           type = file.type;
           size = file.size;
