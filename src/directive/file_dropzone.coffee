@@ -14,7 +14,9 @@ angular.module('omr.angularFileDnD', [])
 
       # function to prevent default behavior (browser loading image)
       processDragOverOrEnter = (event) ->
-        event?.preventDefault()
+        if event
+          event.preventDefault() if event.preventDefault
+          event.stopPropagation() if event.stopPropagation()
         getDataTransfer(event).effectAllowed = 'copy'
         false
 
