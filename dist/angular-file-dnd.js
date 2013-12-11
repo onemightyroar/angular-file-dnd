@@ -15,12 +15,8 @@
         };
         processDragOverOrEnter = function(event) {
           if (event) {
-            if (event.preventDefault) {
-              event.preventDefault();
-            }
-            if (event.stopPropagation()) {
-              event.stopPropagation();
-            }
+            event.preventDefault();
+            event.stopPropogation();
           }
           getDataTransfer(event).effectAllowed = 'copy';
           return false;
