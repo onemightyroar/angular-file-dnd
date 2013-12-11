@@ -14,8 +14,13 @@
           return dataTransfer = event.dataTransfer || event.originalEvent.dataTransfer;
         };
         processDragOverOrEnter = function(event) {
-          if (event != null) {
-            event.preventDefault();
+          if (event) {
+            if (event.preventDefault) {
+              event.preventDefault();
+            }
+            if (event.stopPropagation()) {
+              event.stopPropagation();
+            }
           }
           getDataTransfer(event).effectAllowed = 'copy';
           return false;
