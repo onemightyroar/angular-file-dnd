@@ -3,7 +3,7 @@
   "name": "angular-file-dnd",
   "description": "AngularJS directive leveraging HTML5 Drag and Drop and the FileReader API",
   "version": "1.0.0",
-  "main": "src/dist/angular-file-dnd.min.js",
+  "main": "dist/angular-file-dnd.min.js",
   "dependencies": {
     "angular": "~1.2.0"
   }
