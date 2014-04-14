@@ -66,6 +66,7 @@
                 }
               });
               return scope.$emit('file-dropzone-drop-event', {
+                unencodedFile: file,
                 file: scope.file,
                 type: type,
                 name: name,
