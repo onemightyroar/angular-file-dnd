@@ -6,6 +6,7 @@ angular.module('omr.angularFileDnD', [])
     scope: {
       file: '='
       fileName: '='
+      dropzoneHoverClass: '@'
     }
     link: (scope, element, attrs) ->
 
@@ -15,6 +16,7 @@ angular.module('omr.angularFileDnD', [])
       # function to prevent default behavior (browser loading image)
       processDragOverOrEnter = (event) ->
         if event
+          element.addClass scope.dropzoneHoverClass
           event.preventDefault()  if event.preventDefault
           return false if event.stopPropagation
         getDataTransfer(event).effectAllowed = 'copy'
@@ -43,11 +45,14 @@ angular.module('omr.angularFileDnD', [])
       # event and specify copy as the allowable effect
       element.bind 'dragover', processDragOverOrEnter
       element.bind 'dragenter', processDragOverOrEnter
+      element.bind 'dragleave', ->
+        element.removeClass scope.dropzoneHoverClass
 
       # on drop events we stop browser and read the dropped file via the FileReader
       # the resulting droped file is bound to the image property of the scope of this directive
       element.bind 'drop', (event) ->
         event?.preventDefault()
+        element.removeClass scope.dropzoneHoverClass
         reader = new FileReader()
         reader.onload = (evt) ->
 
@@ -55,7 +60,7 @@ angular.module('omr.angularFileDnD', [])
             scope.$apply ->
               scope.file = evt.target.result
               scope.fileName = name if angular.isString scope.fileName
-            scope.$emit 'file-dropzone-drop-event', {file: scope.file, type: type, name: name, size: size}
+            scope.$emit 'file-dropzone-drop-event', {unencodedFile: file, file: scope.file, type: type, name: name, size: size}
 
         file = getDataTransfer(event).files[0]
         name = file.name
