@@ -5,7 +5,8 @@
       restrict: 'A',
       scope: {
         file: '=',
-        fileName: '='
+        fileName: '=',
+        dropzoneHoverClass: '@'
       },
       link: function(scope, element, attrs) {
         var checkSize, getDataTransfer, isTypeValid, processDragOverOrEnter, validMimeTypes;
@@ -15,6 +16,7 @@
         };
         processDragOverOrEnter = function(event) {
           if (event) {
+            element.addClass(scope.dropzoneHoverClass);
             if (event.preventDefault) {
               event.preventDefault();
             }
@@ -45,11 +47,15 @@
         };
         element.bind('dragover', processDragOverOrEnter);
         element.bind('dragenter', processDragOverOrEnter);
+        element.bind('dragleave', function() {
+          return element.removeClass(scope.dropzoneHoverClass);
+        });
         return element.bind('drop', function(event) {
           var file, name, reader, size, type;
           if (event != null) {
             event.preventDefault();
           }
+          element.removeClass(scope.dropzoneHoverClass);
           reader = new FileReader();
           reader.onload = function(evt) {
             if (checkSize(size) && isTypeValid(type)) {
