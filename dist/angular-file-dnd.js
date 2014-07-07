@@ -2,13 +2,14 @@
   'use strict';
   angular.module('omr.angularFileDnD', []).directive('fileDropzone', function() {
     return {
+      require: '^form',
       restrict: 'A',
       scope: {
         file: '=',
         fileName: '=',
         dropzoneHoverClass: '@'
       },
-      link: function(scope, element, attrs) {
+      link: function(scope, element, attrs, ctrl) {
         var checkSize, getDataTransfer, isTypeValid, processDragOverOrEnter, validMimeTypes;
         getDataTransfer = function(event) {
           var dataTransfer;
@@ -65,6 +66,8 @@
                   return scope.fileName = name;
                 }
               });
+              ctrl.$pristine = false;
+              ctrl.$dirty = true;
               return scope.$emit('file-dropzone-drop-event', {
                 file: scope.file,
                 type: type,

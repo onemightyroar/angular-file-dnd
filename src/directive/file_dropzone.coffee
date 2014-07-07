@@ -2,13 +2,14 @@
 
 angular.module('omr.angularFileDnD', [])
   .directive('fileDropzone', () ->
+    require: '^form'
     restrict: 'A'
     scope: {
       file: '='
       fileName: '='
       dropzoneHoverClass: '@'
     }
-    link: (scope, element, attrs) ->
+    link: (scope, element, attrs, ctrl) ->
 
       getDataTransfer = (event) ->
         dataTransfer = event.dataTransfer || event.originalEvent.dataTransfer
@@ -60,6 +61,8 @@ angular.module('omr.angularFileDnD', [])
             scope.$apply ->
               scope.file = evt.target.result
               scope.fileName = name if angular.isString scope.fileName
+            ctrl.$pristine = false;
+            ctrl.$dirty = true;
             scope.$emit 'file-dropzone-drop-event', {file: scope.file, type: type, name: name, size: size}
 
         file = getDataTransfer(event).files[0]
