@@ -1,8 +1,8 @@
 (function() {
   'use strict';
   angular.module('omr.angularFileDnD', []).directive('fileDropzone', function() {
-    require('^form');
     return {
+      require: '^form',
       restrict: 'A',
       scope: {
         file: '=',

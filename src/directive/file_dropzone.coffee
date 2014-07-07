@@ -2,7 +2,7 @@
 
 angular.module('omr.angularFileDnD', [])
   .directive('fileDropzone', () ->
-    require '^form'
+    require: '^form'
     restrict: 'A'
     scope: {
       file: '='
