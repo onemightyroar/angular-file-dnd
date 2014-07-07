@@ -11,3 +11,7 @@ Install via bower by executing the command `bower install angular-file-dnd`
 2. Add a dependency to 'omr.angularFileDnD' to your angular app.js file
 3. When placing the element in a view, make sure it has a parent Form element
 3. Use as documented [here](http://buildinternet.com/2013/08/drag-and-drop-file-upload-with-angularjs/)
+
+# Upgrading from prevous versions (<1.0.1)
+
+- angular-file-dnd could originally be placed anywhere, however with the changes in 2.0.0, this must be placed within a `<form>` element.

@@ -9,7 +9,7 @@
         fileName: '=',
         dropzoneHoverClass: '@'
       },
-      link: function(scope, element, attrs, ctrl) {
+      link: function(scope, element, attrs, form) {
         var checkSize, getDataTransfer, isTypeValid, processDragOverOrEnter, validMimeTypes;
         getDataTransfer = function(event) {
           var dataTransfer;
@@ -66,8 +66,7 @@
                   return scope.fileName = name;
                 }
               });
-              ctrl.$pristine = false;
-              ctrl.$dirty = true;
+              form.$setDirty();
               return scope.$emit('file-dropzone-drop-event', {
                 file: scope.file,
                 type: type,
