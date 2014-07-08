@@ -2,7 +2,7 @@
 
 angular.module('omr.angularFileDnD', [])
   .directive('fileDropzone', () ->
-    require: '^form'
+    require: '^?form'
     restrict: 'A'
     scope: {
       file: '='
@@ -61,7 +61,8 @@ angular.module('omr.angularFileDnD', [])
             scope.$apply ->
               scope.file = evt.target.result
               scope.fileName = name if angular.isString scope.fileName
-            form.$setDirty() #notify the form of this change
+            if form
+              form.$setDirty() #notify the form of this change
             scope.$emit 'file-dropzone-drop-event', {file: scope.file, type: type, name: name, size: size}
 
         file = getDataTransfer(event).files[0]

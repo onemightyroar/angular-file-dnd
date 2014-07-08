@@ -2,7 +2,7 @@
   'use strict';
   angular.module('omr.angularFileDnD', []).directive('fileDropzone', function() {
     return {
-      require: '^form',
+      require: '^?form',
       restrict: 'A',
       scope: {
         file: '=',
@@ -66,7 +66,9 @@
                   return scope.fileName = name;
                 }
               });
-              form.$setDirty();
+              if (form) {
+                form.$setDirty();
+              }
               return scope.$emit('file-dropzone-drop-event', {
                 file: scope.file,
                 type: type,
