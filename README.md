@@ -10,4 +10,3 @@ Install via bower by executing the command `bower install angular-file-dnd`
 1. Include the file in your view `<script src="components/angular-file-dnd/dist/angular-file-dnd.min.js"></script>`
 2. Add a dependency to 'omr.angularFileDnD' to your angular app.js file
 3. Use as documented [here](http://buildinternet.com/2013/08/drag-and-drop-file-upload-with-angularjs/)
-
