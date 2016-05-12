@@ -78,6 +78,9 @@
             }
           };
           file = getDataTransfer(event).files[0];
+          if (!angular.isObject(file)) {
+            return;
+          }
           name = file.name;
           type = file.type;
           size = file.size;
