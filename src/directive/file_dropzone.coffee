@@ -66,6 +66,8 @@ angular.module('omr.angularFileDnD', [])
             scope.$emit 'file-dropzone-drop-event', {file: scope.file, type: type, name: name, size: size}
 
         file = getDataTransfer(event).files[0]
+        # Ensure that file will be an object.
+        return unless angular.isObject(file)
         name = file.name
         type = file.type
         size = file.size
