@@ -5,6 +5,6 @@
   "version": "1.0.4",
   "main": "dist/angular-file-dnd.min.js",
   "dependencies": {
-    "angular": "~1.2.0"
+    "angular": "^1.2.0"
   }
 }
